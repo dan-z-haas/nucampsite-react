@@ -61,7 +61,7 @@ class Header extends Component {
                                     <NavLink className="nav-link" to="/directory">
                                         <i className="fa fa-list fa-lg" /> Directory
                                     </NavLink>
-                                </NavItem>
+                                </Nav<Button>Meet That Dog</Button>Item>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/aboutus">
                                         <i className="fa fa-info fa-lg" /> About
