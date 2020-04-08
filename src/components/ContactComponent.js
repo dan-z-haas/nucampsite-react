@@ -18,9 +18,6 @@ class Contact extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            return (
-            <div />
-            )
             phoneNum: '',
             email: '',
             agree: false,
