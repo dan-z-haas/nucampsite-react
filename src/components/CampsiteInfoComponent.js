@@ -21,7 +21,7 @@ function RenderCampsite({ campsite }) {
     )
 }
 
-function RenderComments({ comments, addComment, campsiteId }) {
+function RenderComments({ comments, postComment, campsiteId }) {
     if (comments) {
         return (
             <div className="col-md-5 m-1">
@@ -34,7 +34,7 @@ function RenderComments({ comments, addComment, campsiteId }) {
                     </p>
                 ))
                 }
-                <CommentForm campsiteId={campsiteId} addComment={addComment} />
+                <CommentForm campsiteId={campsiteId} postComment={postComment} />
             </div>
         )
     }
@@ -51,7 +51,7 @@ class CommentForm extends Component {
         }
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.addComment = this.props.addComment.bind(this);
+        this.postComment = this.props.postComment.bind(this);
     }
 
     toggleModal() {
@@ -62,7 +62,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+        this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
 
     render() {
@@ -72,7 +72,7 @@ class CommentForm extends Component {
                     <span className="fa fa-pencil"></span>
                     Submit Comment
                 </Button>                
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} addComment={this.props.addComment}>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} postComment={this.props.postComment}>
                     <ModalHeader toggle={this.props.toggleModal} >Submit Comment</ModalHeader>
                     <ModalBody>
                         <LocalForm onSubmit={values => this.handleSubmit(values)}>
@@ -183,7 +183,7 @@ function CampsiteInfo(props) {
                     <RenderCampsite campsite={props.campsite} />
                     <RenderComments
                         comments={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         campsiteId={props.campsite.id}
                     />
                 </div>
