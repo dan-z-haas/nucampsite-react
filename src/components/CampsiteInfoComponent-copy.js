@@ -34,17 +34,14 @@ function RenderComments({ comments, postComment, campsiteId }) {
             <div className="col-md-5 m-1">
                 <h4>Comments</h4>
                 <Stagger in>
-                    {comments.map(comment => {
-                        return (
-                            <Fade in key={comment.id}>
-                                <p>
-                                {comment.text}
-                                <br></br>
-                                {comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
-                                </p>
-                            </Fade>
-                        )
-                    })}
+                    {comments.map(({ id, text, author, date }) => (
+                        <p key={id}>
+                            {text}
+                            <br></br>
+                            {author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(date)))}
+                        </p>
+                    ))
+                    }
                 </Stagger>
                 <CommentForm campsiteId={campsiteId} postComment={postComment} />
             </div>
